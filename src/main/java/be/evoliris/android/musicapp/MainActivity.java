@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements LoadAlbumsTask.Lo
             }
         });
 
+        AlbumCursorAdapter adapter= new AlbumCursorAdapter(MainActivity.this, null);
+        listView.setAdapter(adapter);
+
         updateListView();
 
         registerForContextMenu(listView);
