@@ -41,6 +41,7 @@ public class AlbumCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
+        TextView tvId= (TextView) view.findViewById(R.id.tv_item_id);
         TextView tvTitle= (TextView) view.findViewById(R.id.tv_item_title);
         TextView tvGenre= (TextView) view.findViewById(R.id.tv_list_item_date);
         TextView tvDate= (TextView) view.findViewById(R.id.tv_list_item_date);
@@ -49,6 +50,7 @@ public class AlbumCursorAdapter extends CursorAdapter {
 
         Album a= AlbumDAO.cursorToAlbum(cursor);
 
+        tvId.setText(String.valueOf(a.getId()));
         tvTitle.setText(a.getTitle());
         if(a.isFavorite()){
             tvTitle.setTextColor(context.getResources().getColor(R.color.colorAccent));

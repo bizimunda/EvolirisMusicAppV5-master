@@ -157,6 +157,9 @@ public class AlbumDAO {
         db.delete(TABLE_NAME, COL_TITLE + " = ? ", new String[]{title});
     }
 
+    public void deleteById(long id) {
+        db.delete(TABLE_NAME, COL_ID + " = " + id, null);
+    }
 
 
     // endregion

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -173,8 +174,12 @@ public class MainActivity extends AppCompatActivity implements LoadAlbumsTask.Lo
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)
                 item.getMenuInfo();
 
-        TextView tv = (TextView) info.targetView;
-        Log.i(getLocalClassName(), tv.getText().toString());
+        LinearLayout ll = (LinearLayout) info.targetView;
+
+        TextView tvId= (TextView) ll.findViewById(R.id.tv_item_id);
+        long id= Long.parseLong(tvId.getText().toString());
+
+
 
         switch (item.getItemId()) {
             case R.id.context_menu_edit:
@@ -182,8 +187,8 @@ public class MainActivity extends AppCompatActivity implements LoadAlbumsTask.Lo
                 break;
             case R.id.context_menu_delete:
                 albumDAO = new AlbumDAO(this);
-                albumDAO.openWritable().deleteByTitle(tv.getText().toString());
-                Toast.makeText(this, "Title: " + tv.getText().toString() + " is deleted", Toast.LENGTH_SHORT).show();
+                albumDAO.openWritable().deleteById(id);
+
                 albumDAO.close();
                 updateListView();
                 break;
