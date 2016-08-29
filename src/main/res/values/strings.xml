@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MusicApp</string>
+    <string name="delete_all">Delete all</string>
+</resources>

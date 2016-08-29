@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="news"
+        android:summary="Do you want to receive newsletter for new albums?"
+        android:summaryOff="No, I don't want to receive"
+        android:summaryOn="Yes, I want to receive"
+        android:title="News"></CheckBoxPreference>
+
+    <EditTextPreference
+        android:key="email"
+        android:summary="Your email address"
+        android:title="Email"></EditTextPreference>
+
+</PreferenceScreen>
