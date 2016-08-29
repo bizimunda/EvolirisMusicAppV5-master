@@ -25,8 +25,9 @@ import java.util.List;
 import be.evoliris.android.musicapp.adapter.AlbumCursorAdapter;
 import be.evoliris.android.musicapp.db.dao.AlbumDAO;
 import be.evoliris.android.musicapp.model.Album;
+import be.evoliris.android.musicapp.task.LoadAlbumsTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoadAlbumsTask.LoadAlbumsAsyncTaskCallback {
 
     private Button btnAdd;
     private ListView listView;
@@ -119,11 +120,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateListView() {
 
+        LoadAlbumsTask task= new LoadAlbumsTask(MainActivity.this);
+        task.execute();
 
-        AlbumDAO albumDAO= new AlbumDAO(MainActivity.this);
-        Cursor c= albumDAO.openReadable().readAllCursor();
-        AlbumCursorAdapter adapter= new AlbumCursorAdapter(MainActivity.this, c);
-        listView.setAdapter(adapter);
+//        AlbumDAO albumDAO= new AlbumDAO(MainActivity.this);
+//        Cursor c= albumDAO.openReadable().readAllCursor();
+//        AlbumCursorAdapter adapter= new AlbumCursorAdapter(MainActivity.this, c);
+//        listView.setAdapter(adapter);
 
     }
 
@@ -184,6 +187,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void postUpdateUI(Cursor c) {
+        AlbumCursorAdapter adapter= (AlbumCursorAdapter) listView.getAdapter();
+        adapter.changeCursor(c);
     }
     //endregion
 

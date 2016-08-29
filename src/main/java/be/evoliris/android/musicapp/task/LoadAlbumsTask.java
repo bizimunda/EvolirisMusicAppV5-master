@@ -25,10 +25,15 @@ public class LoadAlbumsTask extends AsyncTask <Void, String, Cursor>{
     @Override
     protected Cursor doInBackground(Void... voids) {
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         AlbumDAO albumDAO= new AlbumDAO(context);
-        Cursor c= albumDAO.openReadable().readAllCursor();
-        AlbumCursorAdapter adapter= new AlbumCursorAdapter(context, c);
-        return c;
+         return albumDAO.openReadable().readAllCursor();
+
     }
 
 
