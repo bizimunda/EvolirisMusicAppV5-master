@@ -2,6 +2,7 @@ package be.evoliris.android.musicapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.evoliris.android.musicapp.adapter.AlbumCursorAdapter;
 import be.evoliris.android.musicapp.db.dao.AlbumDAO;
 import be.evoliris.android.musicapp.model.Album;
 
@@ -116,21 +118,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateListView() {
-        ArrayList<String> data = new ArrayList<>();
-        albumDAO = new AlbumDAO(MainActivity.this);
-        List<Album> albums = albumDAO.openReadable().readAll();
-        for (Album a : albums) {
-            data.add(a.getTitle());
-        }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                MainActivity.this,
-                R.layout.list_item,
-                R.id.tv_item_title,
-                data);
+
+        AlbumDAO albumDAO= new AlbumDAO(MainActivity.this);
+        Cursor c= albumDAO.openReadable().readAllCursor();
+        AlbumCursorAdapter adapter= new AlbumCursorAdapter(MainActivity.this, c);
         listView.setAdapter(adapter);
-
-        albumDAO.close();
 
     }
 

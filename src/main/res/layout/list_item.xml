@@ -28,6 +28,14 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tv_item_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id"
+                android:visibility="gone"
+                />
+
+            <TextView
                 android:id="@+id/tv_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,6 +44,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tv_list_item_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Genre"
@@ -43,6 +52,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tv_list_item_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Release date: "
@@ -50,12 +60,14 @@
                 android:textStyle="bold"/>
 
             <CheckBox
+                android:id="@+id/cb_list_item_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:text="Favourite"/>
 
             <RatingBar
+                android:id="@+id/rb_list_item"
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
