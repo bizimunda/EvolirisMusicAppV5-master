@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements LoadAlbumsTask.Lo
     private void updateListView() {
 
         LoadAlbumsTask task= new LoadAlbumsTask(MainActivity.this);
+        task.setCallback(this);
         task.execute();
 
 //        AlbumDAO albumDAO= new AlbumDAO(MainActivity.this);
