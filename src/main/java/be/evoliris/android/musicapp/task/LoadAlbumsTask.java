@@ -7,9 +7,7 @@ import android.os.AsyncTask;
 import be.evoliris.android.musicapp.adapter.AlbumCursorAdapter;
 import be.evoliris.android.musicapp.db.dao.AlbumDAO;
 
-/**
- * Created by Evoliris on 29/08/2016.
- */
+
 public class LoadAlbumsTask extends AsyncTask <Void, String, Cursor>{
 
     private Context context;
